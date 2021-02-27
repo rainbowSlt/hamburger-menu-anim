@@ -1,0 +1,95 @@
+:root {
+  --primary: #fffffe;
+  --secondary: #5f5c6d;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0 !important;
+  padding: 0;
+}
+
+body {
+  color: var(--secondary);
+  background: var(--primary);
+}
+
+.menu-wrap {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100vh;
+}
+
+.toggler {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: 60px;
+  height: 60px;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.hamburger {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
+}
+
+.hamburger__menu,
+.hamburger__menu::before,
+.hamburger__menu::after {
+  width: 100%;
+  height: 5px;
+  background: var(--secondary);
+  border-radius: 9990px;
+}
+
+.hamburger__menu {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.4s ease;
+}
+
+.hamburger__menu::before,
+.hamburger__menu::after {
+  content: "";
+  position: absolute;
+  top: -15px;
+  transition: all 0.4s ease;
+}
+
+.hamburger__menu::after {
+  top: 15px;
+}
+
+.menu-wrap .toggler:checked + .hamburger .hamburger__menu {
+  background: transparent;
+}
+
+.menu-wrap .toggler:checked + .hamburger .hamburger__menu::before {
+  top: 0;
+  transform: rotate(45deg);
+}
+
+.menu-wrap .toggler:checked + .hamburger .hamburger__menu::after {
+  top: 0;
+  transform: rotate(-45deg);
+}
